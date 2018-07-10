@@ -2,9 +2,9 @@
 
 return [
 	'mysql' => [
-		'host' => 'localhost',
+		'host' => 'university.netology.ru',
 		'dbname' => 'faq',
-		'user' => 'root',
-		'pass' => '',
+		'user' => 'saranchuk',
+		'pass' => 'neto1769',
 	]
 ];
