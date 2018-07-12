@@ -5,7 +5,7 @@
             "Faq\\faq\\": "model/",
             "User\\user\\": "model/",
             "FaqController\\faqController\\": "controller/",
-            "FaqController\\faqController\\": "controller/",
+            "UserController \\userController \\": "controller/",
         }
     }
 }
