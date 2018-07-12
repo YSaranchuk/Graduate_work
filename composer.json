@@ -2,7 +2,8 @@
     "autoload": {
         "psr-4": {
             "DataBase\\database\\": "upload/",
-            "Faq\\faq\\": "model/"
+            "Faq\\faq\\": "model/",
+            "User\\user\\": "model/",
         }
     }
 }
