@@ -4,6 +4,7 @@
             "DataBase\\database\\": "upload/",
             "Faq\\faq\\": "model/",
             "User\\user\\": "model/",
+            "FaqController\\user\\": "model/",
         }
     }
 }
