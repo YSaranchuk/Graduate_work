@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
 
-$config = include 'config.php';
+$config = include __DIR__ . 'config.php';
 
 include 'upload/database/DataBase.php';
 
