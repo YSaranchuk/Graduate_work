@@ -1,10 +1,12 @@
 <?php
 
+namespace Controller\Faq;
+
 class FaqController {
 	private $model = null;
 	
-	function __construct ($db) {
-		include 'model/faq.php';
+	public function __construct ($db) {
+		include 'model/Faq.php';
 		$this->model = new Faq($db);
 	}
 	
@@ -21,7 +23,7 @@ class FaqController {
 	}
 	
 
-	function getFormInterfaceAdmin($id) {
+	public function getFormInterfaceAdmin($id) {
 		$listAdmin = $this->model->getListAdmin();
 		$list = $this->model->getCategory();
 		$countQuest = $this->model->getCategoryAndCountQuestion();
@@ -41,37 +43,37 @@ class FaqController {
 	}
 	
 	
-	function getDeleteUser($id){
+	public function getDeleteUser($id){
 		$del = $this->modelUser->deleteUser($id);
 	}
 	
-	function getDeleteQuestion($delId) {
+	public function getDeleteQuestion($delId) {
 		$this->model->deleteQuestion($delId);
 	}
 	
-	function getExit() {
+	public function getExit() {
 		$this->modelUser->adminExit();
 	}
 	
-	function getDeleteCategoryAndQuestion($id) {
+	public function getDeleteCategoryAndQuestion($id) {
 		$del = $this->model->deleteCategoryAndQuestion($id);
 	}
 	
-	function getHiddenQuestion($id) {
+	public function getHiddenQuestion($id) {
 		$hidden = $this->model->hiddenQuestion($id);
 	}
 	
-	function getShowQuestion($id) {
+	public function getShowQuestion($id) {
 		$showQuest = $this->model->questionShow($id);
 	}
 	
-	function getShowCategory() {
+	public function getShowCategory() {
 		$list = $this->model->getCategory();
 		$faq = $this->model->getFaq($_GET['list']);
 		echo $this->render('faq/index.php', ['list' => $list, 'faq' => $faq]);
 	}
 	
-	function getAddQuestion($name, $email, $text, $list) {
+	public function getAddQuestion($name, $email, $text, $list) {
 		if($list == 0) {
 			die('<p>Select a category</p>');
 		}
@@ -83,7 +85,7 @@ class FaqController {
 		}
 	}
 	
-	function getEditQuestion($questionId, $question) {
+	public function getEditQuestion($questionId, $question) {
 		if(empty($question)) {
 			echo '<p>Enter question</p>';
 		}
@@ -92,7 +94,7 @@ class FaqController {
 		}
 	}
 	
-	function getEditAnswer($questionId, $answer) {
+	public function getEditAnswer($questionId, $answer) {
 		if(empty($answer)) {
 			echo '<p>Type answer</p>';
 		}
@@ -101,7 +103,7 @@ class FaqController {
 		}
 	}
 	
-	function getEditCategory($category, $id) {
+	public function getEditCategory($category, $id) {
 		if($category == 0) {
 			echo '<p>Select a category</p>';
 			return false;
