@@ -1,19 +1,21 @@
 <?php
 
+namespace Faq\User;
+
 class Faq {
 	private $db = null;
-	function __construct ($db) {
+	public function __construct ($db) {
 		$this->db = $db;
 	}
 
-	function getListAdmin() {
+	public function getListAdmin() {
 		$sql = "SELECT login, password, id FROM users";
 		$allUser = $this->db->query($sql);
 		$allUser->setFetchMode(PDO::FETCH_ASSOC);
 		return $allUser->fetchAll();
 	}
 	
-	function deleteQuestion($delId) {
+	public function deleteQuestion($delId) {
 		$sql = "DELETE FROM question WHERE id = :id";
 		$del = $this->db->prepare($sql);
 		$del->bindValue(':id', $delId, PDO::PARAM_INT);
@@ -21,7 +23,7 @@ class Faq {
 		header('Location: ?interface-admin=1&showQuestion='.$_GET['showQuestion']);
 	}
 	
-	function deleteCategoryAndQuestion($id) {
+	public function deleteCategoryAndQuestion($id) {
 		$delCategory = "DELETE FROM category WHERE id = :id";
 		$delCat = $this->db->prepare($delCategory);
 		$delCat->bindValue(':id', $id, PDO::PARAM_INT);
@@ -35,7 +37,7 @@ class Faq {
 		header('Location: ?interface-admin=1&list-category=1');
 	}
 	
-	function showQuestion($id) {
+	public function showQuestion($id) {
 		$sql = "SELECT question.name, category.name AS list_name, 
 			question.id,
 			question.user_name,
@@ -50,7 +52,7 @@ class Faq {
 		return $getQuestion->fetchAll();	
 	}
 	
-	function showQuestionNoAnswer() {
+	public function showQuestionNoAnswer() {
 		$sql = "SELECT question.name, category.name AS list_name, 
 									question.id, 
 									question.user_name, 
@@ -66,42 +68,42 @@ class Faq {
 		return $getQuestionNoAnswer->fetchAll();	
 	}
 	
-	function hiddenQuestion($id) {
+	public function hiddenQuestion($id) {
 		$sql = "UPDATE question SET `status` = 2 WHERE id = :id";
 		$hidd = $this->db->prepare($sql);
 		$hidd->bindValue(':id', $id, PDO::PARAM_INT);
 		$hidd->execute();
 	}
 	
-	function questionShow($id) {
+	public function questionShow($id) {
 		$sql = "UPDATE question SET `status` = 1 WHERE id = :id";
 		$show = $this->db->prepare($sql);
 		$show->bindValue(':id', $id, PDO::PARAM_INT);
 		$show->execute();
 	}
 	
-	function getCategory() {
+	public function getCategory() {
 		$allCategory = 'SELECT id, name FROM category';
 		$result = $this->db->query($allCategory);
 		$result->setFetchMode(PDO::FETCH_ASSOC);
 		return $result->fetchAll();
 	}
 	
-	function getCategoryAndCountQuestion() {
+	public function getCategoryAndCountQuestion() {
 		$allCategory = 'SELECT category.name, category.id, count(question.name) AS count_question FROM category LEFT JOIN question ON category.id = question.list_id GROUP BY category.name ORDER BY category.id';
 		$result2 = $this->db->query($allCategory);
 		$result2->setFetchMode(PDO::FETCH_ASSOC);
 		return $result2->fetchAll();
 	}
 	
-	function getCategoryAndCountShowQuestion() {
+	public function getCategoryAndCountShowQuestion() {
 		$allCategory = 'SELECT category.name, count(question.status) AS count_show FROM category LEFT JOIN question ON category.id = question.list_id  AND question.status = 1 GROUP BY category.name ORDER BY category.id';
 		$result2 = $this->db->query($allCategory);
 		$result2->setFetchMode(PDO::FETCH_ASSOC);
 		return $result2->fetchAll();
 	}
 	
-	function getCategoryAndCountAnswerQuestion() {
+	public function getCategoryAndCountAnswerQuestion() {
 		$allCategory = 'SELECT category.name, count(question.answer) AS count_answer FROM category LEFT JOIN question ON category.id = question.list_id  AND question.answer = "" GROUP BY category.name ORDER BY category.id';
 		$result2 = $this->db->query($allCategory);
 		$result2->setFetchMode(PDO::FETCH_ASSOC);
@@ -109,7 +111,7 @@ class Faq {
 	}
 	
 	
-	function getFaq($list = null) {
+	public function getFaq($list = null) {
 		if(!$list) {
 			$allFaq = 'SELECT * FROM question';
 		}
@@ -122,7 +124,7 @@ class Faq {
 		return $resultFaq->fetchAll();
 	}
 	
-	function addQuestion($name, $email, $text, $list) {
+	public function addQuestion($name, $email, $text, $list) {
 		$input_email = filter_var($email, FILTER_VALIDATE_EMAIL);
 		if($input_email === false) {
 			echo 'Введите правильно email';
@@ -151,7 +153,7 @@ class Faq {
 		die ('<p>Вопрос появится, после того, как на него ответит администратор</p>');															
 	}
 	
-	function editQuestion($questionId, $question) {
+	public function editQuestion($questionId, $question) {
 		$sql = "UPDATE question SET `name` = :setQuestion WHERE id = :idQuest";
 		$setQuestion = $this->db->prepare($sql);
 		$setQuestion->bindValue(':idQuest', $questionId, PDO::PARAM_INT);
@@ -165,7 +167,7 @@ class Faq {
 		}
 	}
 	
-	function editAnswer($questionId, $answer) {
+	public function editAnswer($questionId, $answer) {
 		$sql = "UPDATE question SET `answer` = :setAnswer WHERE id = :idQuest";
 		$sql2 = "UPDATE question SET `status` = '1' WHERE id = :idQuest";
 			
@@ -186,7 +188,7 @@ class Faq {
 		}
 	}
 	
-	function editCategory($category, $id) {
+	public function editCategory($category, $id) {
 		$sql = "UPDATE question SET `list_id` = :category WHERE id = :id";
 		$setCategory = $this->db->prepare($sql);
 		$setCategory->bindValue(':category', $category, PDO::PARAM_INT);
