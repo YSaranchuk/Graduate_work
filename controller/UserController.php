@@ -1,10 +1,12 @@
 <?php
 
+namespace Controller\User;
+
 class UserController {
 	private $modelUser = null;
 	
-	function __construct ($db) {
-		include 'model/user.php';
+	public function __construct ($db) {
+		include 'model/User.php';
 		$this->modelUser = new User($db);
 	}
 	
@@ -20,7 +22,7 @@ class UserController {
 		}
 	}
 	
-	function formLogon() {
+	public function formLogon() {
 		if(!empty($_SESSION['user'])){
 			header('Location: ?interface-admin=1');
 		}
@@ -29,7 +31,7 @@ class UserController {
 		}
 	}
 	
-	function getLogon($login, $password) {
+	public function getLogon($login, $password) {
 		if(!empty($login) && !empty($password)) {
 			$logon = $this->modelUser->logon($login, $password);
 		}
@@ -39,7 +41,7 @@ class UserController {
 		}
 	}
 	
-	function setNewAdmin($login, $password) {
+	public function setNewAdmin($login, $password) {
 		if(!empty($login) && !empty($password)) {
 			$newAdmin = $this->modelUser->newAdmin($login, $password);
 		}
@@ -48,7 +50,7 @@ class UserController {
 		}
 	}
 	
-	function getUpdatePass($newPass, $admin) {
+	public function getUpdatePass($newPass, $admin) {
 		if(!empty($newPass)) {
 			$pass = $this->modelUser->newPassword($newPass, $admin);
 		}
@@ -57,7 +59,7 @@ class UserController {
 		}
 	}
 	
-	function getNewCategory($title){
+	public function getNewCategory($title){
 		if(!empty($title)) {
 			if(iconv_strlen($title) > 0) {
 				$new = $this->modelUser->newCategory($title);
@@ -68,7 +70,7 @@ class UserController {
 		}
 	}
 	
-	function getNewName($questionId, $name) {
+	public function getNewName($questionId, $name) {
 		if(empty($name)) {
 			echo '<p>Enter your name</p>';
 		}
@@ -79,3 +81,4 @@ class UserController {
 	
 	
 }
+
