@@ -1,5 +1,7 @@
 <?php
 
+namespace Graduate\Database;
+
 class DataBase {
 	public static function connect ($host, $dbname, $user, $pass) {
 		try {
