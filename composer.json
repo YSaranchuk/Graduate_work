@@ -1,11 +1,11 @@
 {
     "autoload": {
         "psr-4": {
-            "DataBase\\database\\": "upload/",
-            "Faq\\faq\\": "model/",
-            "User\\user\\": "model/",
-            "FaqController\\faqController\\": "controller/",
-            "UserController \\userController \\": "controller/",
+            "Graduate\\Database\\": "upload/database/",
+            "Model\\User\\": "model/",
+            "Faq\\User\\": "model/",
+            "Controller\\Faq\\": "controller/",
+            "Controller\\User\\": "controller/"
         }
     }
 }
