@@ -1,5 +1,6 @@
 <?php
-
+use Controller\Faq\FaqController; 
+use Controller\User\UserController;
 include 'controller/faqController.php';
 include 'controller/userController.php';
 
