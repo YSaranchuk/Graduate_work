@@ -1,5 +1,9 @@
 <?php
 
+use  Faq\User\Faq;
+use  Model\User\User;
+use Graduate\Database\DataBase;
+
 namespace Controller\Faq;
 
 class FaqController {
