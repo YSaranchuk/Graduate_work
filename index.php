@@ -14,4 +14,4 @@ $db = \Graduate\Database\DataBase::connect(
 	$config['mysql']['user'],
 	$config['mysql']['pass']
 );
-//include 'upload/router/router.php';
+include 'upload/router/router.php';
