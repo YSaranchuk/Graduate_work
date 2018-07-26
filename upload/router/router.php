@@ -1,10 +1,10 @@
 <?php
 use Controller\Faq\FaqController; 
 use Controller\User\UserController;
-include 'controller/faqController.php';
-include 'controller/userController.php';
+//include 'controller/faqController.php';
+//include 'controller/userController.php';
 
-$faq = new faqController($db);
+$faq = new FaqController($db);
 $user = new UserController($db);
 
 
