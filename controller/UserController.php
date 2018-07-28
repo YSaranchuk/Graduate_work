@@ -2,7 +2,7 @@
 use  Faq\User\Faq;
 use  Model\User\User;
 use Graduate\Database\DataBase;
-namespace Controller\User;
+namespace Controller;
 
 class UserController {
 	private $modelUser = null;
