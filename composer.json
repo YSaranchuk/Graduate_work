@@ -11,8 +11,7 @@
             "Graduate\\Database\\": "upload/database/",
             "Model\\User\\": "model/",
             "Faq\\User\\": "model/",
-            "Controller\\Faq\\": "controller/",
-            "Controller\\User\\": "controller/"
+            "Controller\\": "controller/"
         }
     }
 }
