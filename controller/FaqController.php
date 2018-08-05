@@ -35,14 +35,14 @@ class FaqController {
 		$showQuest = $this->model->showQuestion($id);
 		$questionNoAnswer = $this->model->showQuestionNoAnswer();
 		echo $this->render('faq/interface-admin.php', [
-														'listAdmin' => $listAdmin, 
-														'list' => $list, 
-														'countQuest' => $countQuest,
-														'countShowQuest' => $countShowQuest,
-														'countAnswerQuest' => $countAnswerQuest,
-														'showQuest' => $showQuest,
-														'questionNoAnswer' => $questionNoAnswer
-													]);
+		    'listAdmin' => $listAdmin, 
+		    'list' => $list, 
+		    'countQuest' => $countQuest,
+		    'countShowQuest' => $countShowQuest,
+		    'countAnswerQuest' => $countAnswerQuest,
+		    'showQuest' => $showQuest,
+		    'questionNoAnswer' => $questionNoAnswer
+	        ]);
 	}
 	
 	public function getDeleteUser($id){
