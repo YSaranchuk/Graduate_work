@@ -1,9 +1,9 @@
 <?php
 namespace Controller;
+
 use  Faq\User\Faq;
 use  Model\User\User;
 use Graduate\Database\DataBase;
-
 
 class UserController {
 	private $modelUser = null;
@@ -81,7 +81,6 @@ class UserController {
 			$this->modelUser->newName($questionId, $name);
 		}
 	}
-	
 	
 }
 
