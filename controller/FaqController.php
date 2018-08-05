@@ -1,10 +1,9 @@
 <?php
 namespace Controller;
+
 use  Faq\User\Faq;
 use  Model\User\User;
 use Graduate\Database\DataBase;
-
-
 
 class FaqController {
 	private $model = null;
@@ -45,7 +44,6 @@ class FaqController {
 														'questionNoAnswer' => $questionNoAnswer
 													]);
 	}
-	
 	
 	public function getDeleteUser($id){
 		$del = $this->modelUser->deleteUser($id);
@@ -117,6 +115,5 @@ class FaqController {
 		}
 		
 	}
-	
-	
+		
 }
